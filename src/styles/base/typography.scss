@@ -1,0 +1,337 @@
+/*
+ * Typography styles for @garda/crisis24.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ *
+ * @see https://www.figma.com/design/XxDeNES3KCxZ3qRZQpPGV5/grd025-crisis24-website-02?node-id=5661-4164&node-type=canvas&m=dev
+ */
+
+// CSS variables definition.
+
+:root {
+  // Fonts.
+
+  --typography-font-family: var(--font-din-pro), system-ui, sans-serif;
+
+  // Text nodes and levels sizes.
+
+  --typography-font-size-display-1: #{px-to-rem(144px)};
+  --typography-font-size-display-2: #{px-to-rem(104px)};
+
+  --typography-font-size-h1: #{px-to-rem(72px)};
+  --typography-font-size-h2: #{px-to-rem(56px)};
+  --typography-font-size-h3: #{px-to-rem(40px)};
+  --typography-font-size-h4: #{px-to-rem(28px)};
+  --typography-font-size-h5: #{px-to-rem(20px)};
+  --typography-font-size-h6: #{px-to-rem(24px)};
+
+  --typography-font-size-label-lg: #{px-to-rem(14px)};
+  --typography-font-size-label-md: #{px-to-rem(12px)};
+  --typography-font-size-label-sm: #{px-to-rem(10px)};
+
+  --typography-font-size-body-lg: #{px-to-rem(18px)};
+  --typography-font-size-body-md: 1rem;
+  --typography-font-size-body-sm: #{px-to-rem(14px)};
+  --typography-font-size-body-xs: #{px-to-rem(12px)};
+
+  --typography-font-size-p: 1rem;
+  --typography-font-size-span: inherit;
+
+  @include max-media-query(lg) {
+    --typography-font-size-display-1: #{px-to-rem(104px)};
+    --typography-font-size-display-2: #{px-to-rem(54px)};
+
+    --typography-font-size-h1: #{px-to-rem(44px)};
+    --typography-font-size-h2: #{px-to-rem(36px)};
+    --typography-font-size-h3: #{px-to-rem(28px)};
+    --typography-font-size-h4: #{px-to-rem(24px)};
+    --typography-font-size-h5: #{px-to-rem(20px)};
+    --typography-font-size-h6: #{px-to-rem(22px)};
+
+    --typography-font-size-label-lg: #{px-to-rem(14px)};
+    --typography-font-size-label-md: #{px-to-rem(12px)};
+    --typography-font-size-label-sm: #{px-to-rem(10px)};
+
+    --typography-font-size-body-lg: #{px-to-rem(18px)};
+    --typography-font-size-body-md: 1rem;
+    --typography-font-size-body-sm: #{px-to-rem(14px)};
+    --typography-font-size-body-xs: #{px-to-rem(12px)};
+
+    --typography-font-size-p: 1rem;
+    --typography-font-size-span: inherit;
+  }
+
+  // Text weights.
+
+  --typography-font-weight-display-1: 300;
+  --typography-font-weight-display-2: 300;
+
+  --typography-font-weight-h1: 300;
+  --typography-font-weight-h2: 300;
+  --typography-font-weight-h3: 300;
+  --typography-font-weight-h4: 400;
+  --typography-font-weight-h5: 400;
+  --typography-font-weight-h6: 300;
+
+  --typography-font-weight-label-lg: 500;
+  --typography-font-weight-label-md: 500;
+  --typography-font-weight-label-sm: 500;
+
+  --typography-font-weight-body-lg: 400;
+  --typography-font-weight-body-md: 400;
+  --typography-font-weight-body-sm: 400;
+  --typography-font-weight-body-xs: 400;
+
+  --typography-font-weight-p: 400;
+  --typography-font-weight-span: inherit;
+
+  // Text line heights.
+
+  --typography-line-height-display-1: 100%;
+  --typography-line-height-display-2: 100%;
+
+  --typography-line-height-h1: 100%;
+  --typography-line-height-h2: 100%;
+  --typography-line-height-h3: 100%;
+  --typography-line-height-h4: 100%;
+  --typography-line-height-h5: 110%;
+  --typography-line-height-h6: 133.333%;
+
+  --typography-line-height-label-lg: #{px-to-rem(16px)};
+  --typography-line-height-label-md: #{px-to-rem(14px)};
+  --typography-line-height-label-sm: #{px-to-rem(12px)};
+
+  --typography-line-height-body-lg: #{px-to-rem(24px)};
+  --typography-line-height-body-md: #{px-to-rem(22px)};
+  --typography-line-height-body-sm: #{px-to-rem(18px)};
+  --typography-line-height-body-xs: #{px-to-rem(16px)};
+
+  --typography-line-height-p: #{px-to-rem(22px)};
+  --typography-line-height-span: inherit;
+
+  // Text letter spacing.
+
+  --typography-letter-spacing-display-1: -2.88px;
+  --typography-letter-spacing-display-2: -2.08px;
+
+  --typography-letter-spacing-h1: -1.44px;
+  --typography-letter-spacing-h2: -0.56px;
+  --typography-letter-spacing-h3: normal;
+  --typography-letter-spacing-h4: normal;
+  --typography-letter-spacing-h5: normal;
+  --typography-letter-spacing-h6: -0.48px;
+
+  --typography-letter-spacing-label-lg: 0.42px;
+  --typography-letter-spacing-label-md: 0.36px;
+  --typography-letter-spacing-label-sm: 0.4px;
+  --typography-letter-spacing-body-lg: -0.18px;
+  --typography-letter-spacing-body-md: normal;
+  --typography-letter-spacing-body-sm: normal;
+  --typography-letter-spacing-body-xs: normal;
+
+  --typography-letter-spacing-p: normal;
+  --typography-letter-spacing-span: inherit;
+
+  @include max-media-query(md) {
+    --typography-letter-spacing-display-1: -1.08px;
+    --typography-letter-spacing-display-2: -1.08px;
+
+    --typography-letter-spacing-h1: -0.88px;
+    --typography-letter-spacing-h2: -0.36px;
+    --typography-letter-spacing-h6: -0.44px;
+  }
+
+  // Text margins.
+
+  --typography-margin-h1: 2rem;
+  --typography-margin-h2: 2rem;
+  --typography-margin-h3: 2rem;
+  --typography-margin-h4: 1.5rem;
+  --typography-margin-h5: 1.5rem;
+  --typography-margin-h6: 1.5rem;
+
+  --typography-margin-display-1: 2rem;
+  --typography-margin-display-2: 2rem;
+
+  --typography-margin-label-lg: 1.5rem;
+  --typography-margin-label-md: 1rem;
+  --typography-margin-label-sm: 1rem;
+
+  --typography-margin-body-lg: 1.5rem;
+  --typography-margin-body-md: 1rem;
+  --typography-margin-body-sm: 1rem;
+  --typography-margin-body-xs: 1rem;
+
+  --typography-margin-p: 1rem;
+  --typography-margin-span: 0;
+
+  // White theme.
+
+  --theme-white-display-1-color: var(--color-black);
+  --theme-white-display-2-color: var(--color-black);
+
+  --theme-white-h1-color: var(--color-black);
+  --theme-white-h2-color: var(--color-black);
+  --theme-white-h3-color: var(--color-black);
+  --theme-white-h4-color: var(--color-black);
+  --theme-white-h5-color: var(--color-black);
+  --theme-white-h6-color: var(--color-black);
+
+  --theme-white-label-lg-color: var(--color-primary);
+  --theme-white-label-md-color: var(--color-primary);
+  --theme-white-label-sm-color: var(--color-primary);
+  --theme-white-body-lg-color: var(--color-black);
+  --theme-white-body-md-color: var(--color-black);
+  --theme-white-body-sm-color: var(--color-black);
+  --theme-white-body-xs-color: var(--color-black);
+
+  --theme-white-p-color: var(--color-black);
+  --theme-white-span-color: inherit;
+
+  // Grey 1 theme.
+
+  --theme-grey-1-display-1-color: var(--color-black);
+  --theme-grey-1-display-2-color: var(--color-black);
+
+  --theme-grey-1-h1-color: var(--color-black);
+  --theme-grey-1-h2-color: var(--color-black);
+  --theme-grey-1-h3-color: var(--color-black);
+  --theme-grey-1-h4-color: var(--color-black);
+  --theme-grey-1-h5-color: var(--color-black);
+  --theme-grey-1-h6-color: var(--color-black);
+
+  --theme-grey-1-label-lg-color: var(--color-primary);
+  --theme-grey-1-label-md-color: var(--color-primary);
+  --theme-grey-1-label-sm-color: var(--color-primary);
+  --theme-grey-1-body-lg-color: var(--color-black);
+  --theme-grey-1-body-md-color: var(--color-black);
+  --theme-grey-1-body-sm-color: var(--color-black);
+  --theme-grey-1-body-xs-color: var(--color-black);
+
+  --theme-grey-1-p-color: var(--color-black);
+  --theme-grey-1-span-color: inherit;
+
+  // Grey 10 theme.
+
+  --theme-grey-10-display-1-color: var(--color-white);
+  --theme-grey-10-display-2-color: var(--color-white);
+
+  --theme-grey-10-h1-color: var(--color-white);
+  --theme-grey-10-h2-color: var(--color-white);
+  --theme-grey-10-h3-color: var(--color-white);
+  --theme-grey-10-h4-color: var(--color-white);
+  --theme-grey-10-h5-color: var(--color-white);
+  --theme-grey-10-h6-color: var(--color-white);
+
+  --theme-grey-10-label-lg-color: var(--color-primary);
+  --theme-grey-10-label-md-color: var(--color-primary);
+  --theme-grey-10-label-sm-color: var(--color-primary);
+  --theme-grey-10-body-lg-color: var(--color-white);
+  --theme-grey-10-body-md-color: var(--color-white);
+  --theme-grey-10-body-sm-color: var(--color-white);
+  --theme-grey-10-body-xs-color: var(--color-white);
+
+  --theme-grey-10-p-color: var(--color-white);
+  --theme-grey-10-span-color: inherit;
+
+  // Grey 11 theme.
+
+  --theme-grey-11-display-1-color: var(--color-white);
+  --theme-grey-11-display-2-color: var(--color-white);
+
+  --theme-grey-11-h1-color: var(--color-white);
+  --theme-grey-11-h2-color: var(--color-white);
+  --theme-grey-11-h3-color: var(--color-white);
+  --theme-grey-11-h4-color: var(--color-white);
+  --theme-grey-11-h5-color: var(--color-white);
+  --theme-grey-11-h6-color: var(--color-white);
+
+  --theme-grey-11-label-lg-color: var(--color-primary);
+  --theme-grey-11-label-md-color: var(--color-primary);
+  --theme-grey-11-label-sm-color: var(--color-primary);
+  --theme-grey-11-body-lg-color: var(--color-white);
+  --theme-grey-11-body-md-color: var(--color-white);
+  --theme-grey-11-body-sm-color: var(--color-white);
+  --theme-grey-11-body-xs-color: var(--color-white);
+
+  --theme-grey-11-p-color: var(--color-white);
+  --theme-grey-11-span-color: inherit;
+
+  // Black theme.
+
+  --theme-black-display-1-color: var(--color-white);
+  --theme-black-display-2-color: var(--color-white);
+
+  --theme-black-h1-color: var(--color-white);
+  --theme-black-h2-color: var(--color-white);
+  --theme-black-h3-color: var(--color-white);
+  --theme-black-h4-color: var(--color-white);
+  --theme-black-h5-color: var(--color-white);
+  --theme-black-h6-color: var(--color-white);
+
+  --theme-black-label-lg-color: var(--color-primary);
+  --theme-black-label-md-color: var(--color-primary);
+  --theme-black-label-sm-color: var(--color-primary);
+  --theme-black-body-lg-color: var(--color-white);
+  --theme-black-body-md-color: var(--color-white);
+  --theme-black-body-sm-color: var(--color-white);
+  --theme-black-body-xs-color: var(--color-white);
+
+  --theme-black-p-color: var(--color-white);
+  --theme-black-span-color: inherit;
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --display-1-color: var(--theme-#{$theme}-display-1-color);
+    --display-2-color: var(--theme-#{$theme}-display-2-color);
+
+    --h1-color: var(--theme-#{$theme}-h1-color);
+    --h2-color: var(--theme-#{$theme}-h2-color);
+    --h3-color: var(--theme-#{$theme}-h3-color);
+    --h4-color: var(--theme-#{$theme}-h4-color);
+    --h5-color: var(--theme-#{$theme}-h5-color);
+    --h6-color: var(--theme-#{$theme}-h6-color);
+
+    --label-lg-color: var(--theme-#{$theme}-label-lg-color);
+    --label-md-color: var(--theme-#{$theme}-label-md-color);
+    --label-sm-color: var(--theme-#{$theme}-label-sm-color);
+    --body-lg-color: var(--theme-#{$theme}-body-lg-color);
+    --body-md-color: var(--theme-#{$theme}-body-md-color);
+    --body-sm-color: var(--theme-#{$theme}-body-sm-color);
+    --body-xs-color: var(--theme-#{$theme}-body-xs-color);
+
+    --p-color: var(--theme-#{$theme}-p-color);
+    --span-color: var(--theme-#{$theme}-span-color);
+  }
+}
+
+// Global styles.
+
+html,
+body {
+  font-family: var(--typography-font-family);
+  text-rendering: optimizeLegibility;
+}
+
+// Text alignment utility classes.
+// Necessary to support the CKEditor content.
+
+@each $value in $text-alignments {
+  .text-align-#{$value} {
+    text-align: #{$value};
+  }
+}
+
+// Font weight utility classes.
+
+@each $key, $value in $font-weights {
+  .fw-#{$key} {
+    font-weight: #{$value};
+  }
+}

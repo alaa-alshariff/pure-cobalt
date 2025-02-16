@@ -1,0 +1,11 @@
+/*
+ * Functions for @garda/crisis24.
+ *
+ * Note: this file is included on every page, please don't add styles here that are not needed.
+ */
+
+@use 'sass:math';
+
+@function px-to-rem($pxValue) {
+  @return math.div($pxValue, 16px) * 1rem;
+}

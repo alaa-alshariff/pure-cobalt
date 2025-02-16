@@ -1,0 +1,54 @@
+/*
+ * Base button mixin.
+ *
+ * Used on all buttons to set shared properties and variables.
+ *
+ * Note: this file is included on every page, please don't add styles here that are not needed.
+ *
+ * @see https://www.figma.com/design/1fysOYudJ918xtLcbZ3kJp/Crisis24-Website-2.0?node-id=2030-33&node-type=canvas&m=dev
+ */
+
+@mixin button-base {
+  width: fit-content;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  outline: none;
+  display: inline-flex;
+  transition: var(--button-transition);
+  user-select: none;
+  align-items: center;
+  white-space: nowrap;
+  text-decoration: none;
+
+  @include max-media-query(sm) {
+    span {
+      white-space: normal;
+    }
+  }
+
+  // Disabled.
+
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  // Unstyled.
+
+  &.unstyled,
+  &.unstyled:hover {
+    all: unset;
+  }
+
+  // Print styles.
+
+  @media print {
+    break-before: avoid;
+    break-inside: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+  }
+}

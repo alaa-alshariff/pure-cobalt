@@ -1,0 +1,137 @@
+/*
+ * Buttons styles.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ *
+ * @see https://www.figma.com/design/1fysOYudJ918xtLcbZ3kJp/Crisis24-Website-2.0?node-id=2030-33&node-type=canvas&m=dev
+ */
+
+// CSS variables definition.
+
+:root {
+  --button-transition: all 0.3s ease-in-out;
+
+  // Primary variant.
+
+  --button-primary-font-size: 1rem;
+  --button-primary-font-weight: 400;
+
+  --button-primary-xl-font-size: #{px-to-rem(18px)};
+
+  --button-primary-gap-x: 12px;
+  --button-primary-height: 48px;
+  --button-primary-padding-x: 12px;
+  --button-primary-icon-size: 24px;
+  --button-primary-border-radius: 24px;
+
+  --button-primary-xl-height: 72px;
+  --button-primary-xl-padding-x: 16px;
+  --button-primary-xl-icon-size: 32px;
+  --button-primary-xl-border-radius: 72px;
+
+  // Secondary variant.
+
+  --button-secondary-font-size: 1rem;
+  --button-secondary-font-weight: 400;
+
+  --button-secondary-xl-font-size: #{px-to-rem(18px)};
+
+  --button-secondary-gap-x: 12px;
+  --button-secondary-height: 48px;
+  --button-secondary-dot-size: 8px;
+  --button-secondary-padding-x: 12px;
+  --button-secondary-border-radius: 24px;
+  --button-secondary-active-dot-size: 24px;
+
+  --button-secondary-xl-height: 72px;
+  --button-secondary-xl-padding-x: 16px;
+  --button-secondary-xl-border-radius: 72px;
+  --button-secondary-xl-active-dot-size: 48px;
+
+  // White theme.
+
+  --theme-white-button-primary-text-color: var(--color-black);
+  --theme-white-button-primary-bg-color: transparent;
+  --theme-white-button-primary-icon-color: var(--color-black);
+  --theme-white-button-primary-icon-bg-color: var(--color-primary);
+  --theme-white-button-primary-active-text-color: var(--color-black);
+  --theme-white-button-primary-active-bg-color: var(--color-primary);
+  --theme-white-button-primary-active-icon-color: var(--color-black);
+  --theme-white-button-primary-active-icon-bg-color: var(--color-white);
+
+  --theme-white-button-secondary-text-color: var(--color-black);
+  --theme-white-button-secondary-bg-color: var(--color-primary);
+  --theme-white-button-secondary-dot-color: var(--color-black);
+  --theme-white-button-secondary-active-text-color: var(--color-white);
+  --theme-white-button-secondary-active-bg-color: var(--color-black);
+  --theme-white-button-secondary-active-dot-color: var(--color-primary);
+
+  // Black theme.
+
+  --theme-black-button-primary-text-color: var(--color-white);
+  --theme-black-button-primary-bg-color: transparent;
+  --theme-black-button-primary-icon-color: var(--color-black);
+  --theme-black-button-primary-icon-bg-color: var(--color-primary);
+  --theme-black-button-primary-active-text-color: var(--color-black);
+  --theme-black-button-primary-active-bg-color: var(--color-primary);
+  --theme-black-button-primary-active-icon-color: var(--color-black);
+  --theme-black-button-primary-active-icon-bg-color: var(--color-white);
+
+  --theme-black-button-secondary-text-color: var(--color-black);
+  --theme-black-button-secondary-bg-color: var(--color-primary);
+  --theme-black-button-secondary-dot-color: var(--color-black);
+  --theme-black-button-secondary-active-text-color: var(--color-black);
+  --theme-black-button-secondary-active-bg-color: var(--color-white);
+  --theme-black-button-secondary-active-dot-color: var(--color-primary);
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --button-primary-text-color: var(
+      --theme-#{$theme}-button-primary-text-color
+    );
+    --button-primary-bg-color: var(--theme-#{$theme}-button-primary-bg-color);
+    --button-primary-icon-color: var(
+      --theme-#{$theme}-button-primary-icon-color
+    );
+    --button-primary-icon-bg-color: var(
+      --theme-#{$theme}-button-primary-icon-bg-color
+    );
+    --button-primary-active-text-color: var(
+      --theme-#{$theme}-button-primary-active-text-color
+    );
+    --button-primary-active-bg-color: var(
+      --theme-#{$theme}-button-primary-active-bg-color
+    );
+    --button-primary-active-icon-color: var(
+      --theme-#{$theme}-button-primary-active-icon-color
+    );
+    --button-primary-active-icon-bg-color: var(
+      --theme-#{$theme}-button-primary-active-icon-bg-color
+    );
+
+    --button-secondary-text-color: var(
+      --theme-#{$theme}-button-secondary-text-color
+    );
+    --button-secondary-bg-color: var(
+      --theme-#{$theme}-button-secondary-bg-color
+    );
+    --button-secondary-dot-color: var(
+      --theme-#{$theme}-button-secondary-dot-color
+    );
+    --button-secondary-active-text-color: var(
+      --theme-#{$theme}-button-secondary-active-text-color
+    );
+    --button-secondary-active-bg-color: var(
+      --theme-#{$theme}-button-secondary-active-bg-color
+    );
+    --button-secondary-active-dot-color: var(
+      --theme-#{$theme}-button-secondary-active-dot-color
+    );
+  }
+}

@@ -1,0 +1,83 @@
+.flex {
+  display: flex;
+}
+
+// Wrap.
+
+$wrapValues: nowrap, wrap, wrap-reverse;
+
+@each $value in $wrapValues {
+  .wrap-#{$value} {
+    flex-wrap: $value;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include min-media-query($breakpoint) {
+    @each $value in $wrapValues {
+      .wrap-#{$breakpoint}-#{$value} {
+        flex-wrap: $value;
+      }
+    }
+  }
+}
+
+// Alignment.
+
+$alignValues: start, center, end, stretch;
+
+@each $value in $alignValues {
+  .align-#{$value} {
+    align-items: $value;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include min-media-query($breakpoint) {
+    @each $value in $alignValues {
+      .align-#{$breakpoint}-#{$value} {
+        align-items: $value;
+      }
+    }
+  }
+}
+
+// Justify.
+
+$justifyValues: start, center, end, space-between, space-around, space-evenly;
+
+@each $value in $justifyValues {
+  .justify-#{$value} {
+    justify-content: $value;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include min-media-query($breakpoint) {
+    @each $value in $justifyValues {
+      .justify-#{$breakpoint}-#{$value} {
+        justify-content: $value;
+      }
+    }
+  }
+}
+
+// Direction.
+
+$directionValues: row, row-reverse, column, column-reverse;
+
+@each $value in $directionValues {
+  .direction-#{$value} {
+    flex-direction: $value;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include min-media-query($breakpoint) {
+    @each $value in $directionValues {
+      .direction-#{$breakpoint}-#{$value} {
+        flex-direction: $value;
+      }
+    }
+  }
+}

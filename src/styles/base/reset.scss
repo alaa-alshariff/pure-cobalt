@@ -1,0 +1,65 @@
+/*
+ * CSS reset styles for @garda/crisis24.
+ *
+ * Based on Josh Comeau's CSS reset.
+ * 
+ * Note: this file is included on every page, please don't add styles here that are not needed. 
+ *
+ * @see https://www.joshwcomeau.com/css/custom-css-reset/
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  height: auto;
+  display: block;
+  max-width: 100%;
+  aspect-ratio: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+sub,
+sup {
+  font-size: 75%;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+a {
+  text-decoration: none;
+}

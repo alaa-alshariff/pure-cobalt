@@ -1,0 +1,170 @@
+/*
+ * SCSS variables for @garda/crisis24.
+ *
+ * Mainly used to keep the stylesheets DRY with loops.
+ * Actual values should be defined in base files as a CSS variable so that they can be overridden per site.
+ *
+ * Note: this file is included in the build process, so it should only contain SCSS variables.
+ *
+ * @see https://www.figma.com/design/XxDeNES3KCxZ3qRZQpPGV5/grd025-crisis24-website-02?node-id=5661-4164&node-type=canvas&m=dev
+ */
+
+// Colors.
+// Setting the color as Scss variables enables us to use them in functions like rgba().
+
+$white: #ffffff;
+
+$black: #000000;
+
+$red: #d52b1e;
+
+$colors: "white", "black", "red";
+
+// Themes.
+
+$themes: "white", "black";
+
+$light-themes: "white";
+
+$dark-themes: "black";
+
+// Typography.
+
+$text-nodes: "p", "span", "h1", "h2", "h3", "h4", "h5", "h6";
+
+$text-levels: "display-1", "display-2", "label-lg", "label-md", "label-sm",
+  "body-lg", "body-md", "body-sm", "body-xs";
+
+$font-weights: (
+  "extralight": 200,
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+);
+
+$text-transform: "uppercase", "lowercase", "capitalize";
+
+$text-alignments: "left", "center", "right", "justify";
+
+// Lists.
+
+$list-variants: "square", "bullet", "dash", "number", "border";
+
+// Buttons.
+
+$button-active-colors: "white", "black";
+
+// Grid (12 columns).
+
+$widths: (
+  0: auto,
+  1: 8%,
+  2: 17%,
+  3: 25%,
+  4: 33%,
+  5: 42%,
+  6: 50%,
+  7: 58%,
+  8: 66%,
+  9: 75%,
+  10: 83%,
+  11: 91%,
+  12: 100%,
+);
+
+// Spacing.
+
+$spacing-properties: (
+  "padding": "padding",
+  "paddingTop": "padding-top",
+  "paddingRight": "padding-right",
+  "paddingBottom": "padding-bottom",
+  "paddingLeft": "padding-left",
+  "margin": "margin",
+  "marginTop": "margin-top",
+  "marginRight": "margin-right",
+  "marginBottom": "margin-bottom",
+  "marginLeft": "margin-left",
+  "gap": "gap",
+  "rowGap": "row-gap",
+  "columnGap": "column-gap",
+);
+
+$spacings: "xxs", "xs", "sm", "md", "lg", "xl", "xxl";
+
+// Breakpoints.
+
+$breakpoints: "xs", "sm", "md", "lg", "xl", "xxl";
+
+$breakpoint-min-width-xs: 0;
+$breakpoint-min-width-sm: 480;
+$breakpoint-min-width-md: 768;
+$breakpoint-min-width-lg: 1024;
+$breakpoint-min-width-xl: 1440;
+$breakpoint-min-width-xxl: 1920;
+
+$breakpoints-min-width: (
+  "xs": $breakpoint-min-width-xs,
+  "sm": $breakpoint-min-width-sm,
+  "md": $breakpoint-min-width-md,
+  "lg": $breakpoint-min-width-lg,
+  "xl": $breakpoint-min-width-xl,
+  "xxl": $breakpoint-min-width-xxl,
+);
+
+$min-media-queries: (
+  "xs": "(min-width: #{$breakpoint-min-width-xs}px)",
+  "sm": "(min-width: #{$breakpoint-min-width-sm}px)",
+  "md": "(min-width: #{$breakpoint-min-width-md}px)",
+  "lg": "(min-width: #{$breakpoint-min-width-lg}px)",
+  "xl": "(min-width: #{$breakpoint-min-width-xl}px)",
+  "xxl": "(min-width: #{$breakpoint-min-width-xxl}px)",
+);
+
+$breakpoint-max-width-xs: $breakpoint-min-width-sm - 1;
+$breakpoint-max-width-sm: $breakpoint-min-width-md - 1;
+$breakpoint-max-width-md: $breakpoint-min-width-lg - 1;
+$breakpoint-max-width-lg: $breakpoint-min-width-xl - 1;
+$breakpoint-max-width-xl: $breakpoint-min-width-xxl - 1;
+$breakpoint-max-width-xxl: $breakpoint-min-width-xxl;
+
+$breakpoints-max-width: (
+  "xs": $breakpoint-max-width-xs,
+  "sm": $breakpoint-max-width-sm,
+  "md": $breakpoint-max-width-md,
+  "lg": $breakpoint-max-width-lg,
+  "xl": $breakpoint-max-width-xl,
+  "xxl": $breakpoint-max-width-xxl,
+);
+
+$max-media-queries: (
+  "xs": "(max-width: #{$breakpoint-max-width-xs}px)",
+  "sm": "(max-width: #{$breakpoint-max-width-sm}px)",
+  "md": "(max-width: #{$breakpoint-max-width-md}px)",
+  "lg": "(max-width: #{$breakpoint-max-width-lg}px)",
+  "xl": "(max-width: #{$breakpoint-max-width-xl}px)",
+  "xxl": "(min-width: #{$breakpoint-max-width-xxl}px)",
+  // No max-width for xxl, we use min-width instead.
+);
+
+// Responsive container.
+
+$container-max-widths: (
+  "xs": 100vw,
+  "sm": 100vw,
+  "md": 100vw,
+  "lg": 100vw,
+  "xl": 100vw,
+  "xxl": 1920px,
+);
+
+$container-gutters: (
+  "xs": #{px-to-rem(24px)},
+  "sm": #{px-to-rem(24px)},
+  "md": #{px-to-rem(24px)},
+  "lg": #{px-to-rem(64px)},
+  "xl": #{px-to-rem(64px)},
+  "xxl": #{px-to-rem(64px)},
+);

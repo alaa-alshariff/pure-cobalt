@@ -1,0 +1,110 @@
+/*
+ * SCSS breakpoints mixins.
+ *
+ * Note: this file is included on every page, please don't add styles here that are not needed.
+ */
+
+@use 'sass:string';
+
+// Mixins to manage responsive breakpoints.
+
+@mixin min-media-query($breakpoint) {
+  @if map-has-key($min-media-queries, $breakpoint) {
+    @media #{map-get($min-media-queries, $breakpoint)} {
+      @content;
+    }
+  }
+}
+
+@mixin max-media-query($breakpoint) {
+  @if map-has-key($max-media-queries, $breakpoint) {
+    @media #{map-get($max-media-queries, $breakpoint)} {
+      @content;
+    }
+  }
+}
+
+@mixin between-media-query($min-breakpoint, $max-breakpoint) {
+  @if map-has-key($breakpoints-min-width, $min-breakpoint) and
+    map-has-key($breakpoints-min-width, $max-breakpoint)
+  {
+    @media (min-width: #{map-get($breakpoints-min-width, $min-breakpoint)}px) and (max-width: #{map-get($breakpoints-min-width, $max-breakpoint) - 1}px) {
+      @content;
+    }
+  }
+}
+
+@mixin only-media-query($breakpoint) {
+  @if map-has-key($min-media-queries, $breakpoint) and map-has-key($max-media-queries, $breakpoint)
+  {
+    @if $breakpoint == 'xxl' {
+      @media #{map-get($min-media-queries, $breakpoint)} {
+        @content;
+      }
+    } @else {
+      @media #{map-get($min-media-queries, $breakpoint)} and #{map-get($max-media-queries, $breakpoint)} {
+        @content;
+      }
+    }
+  }
+}
+
+/*
+  * with-breakpoints():
+  * @param minMax (min, max, or only) Default: only
+  * @param child (true or false) Default: true
+  *    Allows the selector to be combined with the parent or as a chlid
+  *
+  * @description:
+  *  When used in conjuction with the component, it provides classNames with all available breakpoints
+  *    e.g.: 
+  *      @include with-breakpoints(min)
+  *      className={styles['breakpoint-min-lg']}
+  *      Targets lg and up breakpoints
+  *  
+  *  Activates the styles with the minimum 'lg' breakpoint
+  *  All other styles are ignored unless specifically assigned to the component, 
+  *  thus allowing dynamic breakpoint value in the component.
+ 
+  *  Can also be combined:
+  *    e.g.: 
+  *      @include with-breakpoints(only)
+  *      className={clsx(styles['breakpoint-lg'], styles['breakpoint-sm'])}
+  *      Targets only lg and sm breakpoints
+  * 
+  *  Currently used in the Header component to allow changeable breakpoints for different sites
+  */
+
+@mixin with-breakpoints($minMax, $child: true) {
+  @each $bp in $breakpoints {
+    $selector: string.unquote('.breakpoint-#{$bp}');
+
+    @if $minMax == min or $minMax == max {
+      $selector: string.unquote('.breakpoint-#{$minMax}-#{$bp}');
+    } @else {
+      $minMax: only;
+    }
+
+    @if $child == false {
+      $selector: string.unquote('&#{$selector}');
+    }
+
+    #{$selector} {
+      @if $minMax == min {
+        @include min-media-query($bp) {
+          @content;
+        }
+      }
+      @if $minMax == max {
+        @include max-media-query($bp) {
+          @content;
+        }
+      }
+      @if $minMax == only {
+        @include only-media-query($bp) {
+          @content;
+        }
+      }
+    }
+  }
+}

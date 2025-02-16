@@ -1,0 +1,107 @@
+/*
+ * Primary button variant mixin.
+ *
+ * Makes it easy to apply the primary button styles in any context (pagebuilder, third party, etc).
+ *
+ * Note: this file is included on every page, please don't add styles here that are not needed.
+ *
+ * @see https://www.figma.com/design/1fysOYudJ918xtLcbZ3kJp/Crisis24-Website-2.0?node-id=2030-33&node-type=canvas&m=dev
+ */
+
+@mixin button-primary {
+  gap: var(--button-primary-gap-x);
+  color: var(--button-primary-text-color);
+  padding: 0 var(--button-primary-padding-x) 0 0;
+  overflow: hidden;
+  position: relative;
+  font-size: var(--button-primary-font-size);
+  font-weight: var(--button-primary-font-weight);
+  border-radius: var(--button-primary-border-radius);
+  background-color: var(--button-primary-bg-color);
+
+  .content {
+    height: var(--button-primary-height);
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  svg.icon {
+    width: var(--button-primary-icon-size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-primary-icon-bg-color);
+
+    path {
+      fill: var(--button-primary-icon-color);
+    }
+  }
+
+  svg.icon {
+    transition: var(--button-transition);
+  }
+
+  // XL property overrides.
+
+  &.xl {
+    --button-primary-font-size: var(--button-primary-xl-font-size);
+
+    --button-primary-height: var(--button-primary-xl-height);
+    --button-primary-padding-x: var(--button-primary-xl-padding-x);
+    --button-primary-icon-size: var(--button-primary-xl-icon-size);
+    --button-primary-border-radius: var(--button-primary-xl-border-radius);
+  }
+
+  // Makes the active color configurable via a property.
+
+  @each $active-color in $button-active-colors {
+    &.active-#{$active-color} {
+      --button-primary-icon-bg-color: var(--color-#{$active-color});
+      --button-primary-active-bg-color: var(--color-#{$active-color});
+    }
+  }
+
+  &.active {
+    @include button-primary-active;
+  }
+
+  // Only add interactivity styles for medium and larger screens.
+
+  @include min-media-query(md) {
+    &:hover,
+    &:focus,
+    &:active {
+      @include button-primary-active;
+    }
+  }
+}
+
+/*
+ * Mixin to apply active styles for primary variant.
+ *
+ * Defined as a separate mixin so it can be reused with in other contexts.
+ * i.e. Force the active state when hovering over a parent element.
+ */
+
+@mixin button-primary-active {
+  gap: calc(2 * var(--button-primary-gap-x));
+  padding-left: var(--button-primary-padding-x);
+  padding-right: calc(2 * var(--button-primary-padding-x));
+  background-color: var(--button-primary-active-bg-color);
+
+  &,
+  .content {
+    color: var(--button-primary-active-text-color);
+  }
+
+  svg.icon {
+    background-color: var(--button-primary-active-icon-bg-color);
+
+    path {
+      fill: var(--button-primary-active-icon-color);
+    }
+  }
+}

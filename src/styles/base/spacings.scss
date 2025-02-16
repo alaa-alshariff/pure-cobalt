@@ -1,0 +1,157 @@
+/*
+ * Spacings styles for @garda/crisis24.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *
+ * @see https://www.figma.com/design/XxDeNES3KCxZ3qRZQpPGV5/grd025-crisis24-website-02?node-id=5661-4164&node-type=canvas&m=dev
+ */
+
+// CSS variables definition.
+
+:root {
+  // Container.
+
+  --container-max-width: 100%;
+
+  @each $breakpoint, $max-width in $container-max-widths {
+    --container-max-width-#{$breakpoint}: #{$max-width};
+  }
+
+  @each $breakpoint, $gutter in $container-gutters {
+    --container-gutter-#{$breakpoint}: #{$gutter};
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include only-media-query(#{$breakpoint}) {
+      --container-max-width: var(--container-max-width-#{$breakpoint});
+      --container-gutter: var(--container-gutter-#{$breakpoint});
+    }
+  }
+
+  // Spacings.
+
+  --spacing-none: 0px;
+  --spacing-xxs: #{px-to-rem(12px)};
+  --spacing-xs: #{px-to-rem(16px)};
+  --spacing-sm: #{px-to-rem(24px)};
+  --spacing-md: #{px-to-rem(32px)};
+  --spacing-lg: #{px-to-rem(48px)};
+  --spacing-xl: #{px-to-rem(64px)};
+  --spacing-xxl: #{px-to-rem(128px)};
+
+  @include max-media-query(lg) {
+    --spacing-xxs: #{px-to-rem(12px)};
+    --spacing-xs: #{px-to-rem(16px)};
+    --spacing-sm: #{px-to-rem(24px)};
+    --spacing-md: #{px-to-rem(32px)};
+    --spacing-lg: #{px-to-rem(40px)};
+    --spacing-xl: #{px-to-rem(48px)};
+    --spacing-xxl: #{px-to-rem(96px)};
+  }
+
+  // Border radius.
+
+  --corner-border-radius: 8px;
+
+  // Header.
+
+  --header-height: 112px;
+  --header-gutter: var(--container-gutter);
+
+  --top-bar-height: 48px;
+
+  @include max-media-query(sm) {
+    --top-bar-height: 56px;
+  }
+
+  --scroll-margin-top: calc(var(--header-height) + var(--top-bar-height));
+
+  // Sections.
+
+  --section-primary-height: 900px;
+  --section-secondary-height: 720px;
+  --section-tertiary-height: 652px;
+  --section-quaternary-height: 472px;
+
+  @include max-media-query(md) {
+    --section-primary-height: 640px;
+    --section-secondary-height: 480px;
+    --section-tertiary-height: 400px;
+    --section-quaternary-height: 270px;
+  }
+
+  /**
+   * CSS variable containing the viewport width without scrollbar.
+   * On page load, the real scrollbar width is calculated through JavaScript and this variable is updated.
+   *
+   * @see https://www.smashingmagazine.com/2023/12/new-css-viewport-units-not-solve-classic-scrollbar-problem/
+   */
+
+  --viewport-width: calc(100vw - 16px);
+}
+
+// Normal and responsive width classes.
+
+@each $key, $value in $widths {
+  .width-#{$key} {
+    width: $value;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include min-media-query($breakpoint) {
+    @each $key, $value in $widths {
+      .width-#{$breakpoint}-#{$key} {
+        width: $value;
+      }
+    }
+  }
+}
+
+// Normal and responsive spacings classes.
+
+@each $propertyKey, $property in $spacing-properties {
+  @each $spacing in $spacings {
+    .#{$propertyKey}-#{$spacing} {
+      #{$property}: var(--spacing-#{$spacing});
+    }
+  }
+
+  .#{$propertyKey}-none {
+    #{$property}: 0;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include min-media-query($breakpoint) {
+      @each $spacing in $spacings {
+        .#{$propertyKey}-#{$breakpoint}-#{$spacing} {
+          #{$property}: var(--spacing-#{$spacing});
+        }
+      }
+
+      .#{$propertyKey}-#{$breakpoint}-none {
+        #{$property}: 0;
+      }
+    }
+  }
+}
+
+// Utility classes.
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.horizontal-scroll {
+  overflow-x: auto;
+}
+
+.flex-fill {
+  flex: 1;
+}

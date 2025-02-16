@@ -1,0 +1,83 @@
+/*
+ * Form styles.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ *
+ * @see https://www.figma.com/design/XxDeNES3KCxZ3qRZQpPGV5/grd025-crisis24-website-02?node-id=4462-2329&node-type=frame&t=ceG9eHRaej5qvd9N-0
+ */
+
+// CSS variables definition.
+
+:root {
+  --form-label-font-size: 1rem;
+  --form-label-font-weight: 400;
+  --form-label-line-height: 125%;
+  --form-label-margin-bottom: 1.5rem;
+
+  --form-input-font-size: 1rem;
+  --form-input-font-weight: 400;
+  --form-input-line-height: 125%;
+
+  --form-input-padding-x: 1rem;
+  --form-input-padding-y: #{px-to-rem(18px)};
+  --form-input-border-radius: 0;
+  --form-input-margin-bottom: 1rem;
+
+  --form-input-checkbox-size: 1rem;
+
+  --form-error-font-size: #{px-to-rem(14px)};
+
+  --form-field-margin-bottom: 1rem;
+
+  // White theme.
+
+  --theme-white-form-field-text-color: var(--color-grey-10);
+  --theme-white-form-field-border-color: var(--color-grey-4);
+  --theme-white-form-field-placeholder-color: var(--color-grey-6);
+  --theme-white-form-field-bg-color: var(--color-white);
+
+  --theme-white-form-field-border-active-color: var(--color-black);
+  --theme-white-form-checkbox-active-color: var(--color-black);
+  --theme-white-form-select-active-color: var(--color-grey-2);
+
+  --theme-white-form-error-color: var(--color-orange-2);
+
+  // Black theme.
+
+  --theme-black-form-field-text-color: var(--color-white);
+  --theme-black-form-field-border-color: var(--color-grey-3);
+  --theme-black-form-field-placeholder-color: var(--color-grey-3);
+  --theme-black-form-field-bg-color: var(--color-black);
+
+  --theme-black-form-field-border-active-color: var(--color-white);
+  --theme-black-form-checkbox-active-color: var(--color-white);
+  --theme-black-form-select-active-color: var(--color-grey-6);
+
+  --theme-black-form-error-color: var(--color-orange-2);
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --form-field-text-color: var(--theme-#{$theme}-form-field-text-color);
+    --form-field-border-color: var(--theme-#{$theme}-form-field-border-color);
+    --form-field-placeholder-color: var(
+      --theme-#{$theme}-form-field-placeholder-color
+    );
+    --form-field-bg-color: var(--theme-#{$theme}-form-field-bg-color);
+
+    --form-field-border-active-color: var(
+      --theme-#{$theme}-form-field-border-active-color
+    );
+    --form-checkbox-active-color: var(
+      --theme-#{$theme}-form-checkbox-active-color
+    );
+    --form-select-active-color: var(--theme-#{$theme}-form-select-active-color);
+
+    --form-error-color: var(--theme-#{$theme}-form-error-color);
+  }
+}

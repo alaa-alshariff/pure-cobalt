@@ -1,0 +1,19 @@
+.responsiveContainer {
+  z-index: 1;
+  position: relative;
+
+  // Responsiveness.
+
+  .content {
+    height: 100%;
+    margin: 0 auto;
+    z-index: 2;
+    flex-grow: 1;
+  }
+
+  &:not(.fluid) .content {
+    max-width: var(--container-max-width);
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+  }
+}

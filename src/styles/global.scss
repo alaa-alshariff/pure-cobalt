@@ -1,0 +1,19 @@
+/*
+ * Global styles for @garda/crisis24.
+ *
+ * Note: this file is included on every page, please don't add styles here that are not needed.
+ *
+ * @see https://www.figma.com/design/XxDeNES3KCxZ3qRZQpPGV5/grd025-crisis24-website-02?node-id=5661-4164&node-type=canvas&m=dev
+ */
+
+@import "./base";
+
+// Global styles.
+
+[id] {
+  scroll-margin-top: var(--scroll-margin-top);
+}
+
+html {
+  scroll-behavior: smooth;
+}

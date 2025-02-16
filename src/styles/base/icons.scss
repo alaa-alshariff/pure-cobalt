@@ -1,0 +1,54 @@
+/*
+ * Icons styles.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ *
+ * @see https://www.figma.com/design/1fysOYudJ918xtLcbZ3kJp/Crisis24-Website-2.0?node-id=5715-22967&node-type=frame&m=dev
+ */
+
+// CSS variables definition.
+
+:root {
+  --icon-button-size-sm: 16px;
+  --icon-button-size-md: 24px;
+  --icon-button-size-lg: 32px;
+
+  --icon-button-padding-sm: 4px;
+  --icon-button-padding-md: 8px;
+  --icon-button-padding-lg: 12px;
+
+  // White theme.
+
+  --theme-white-icon-color: var(--color-black);
+
+  --theme-white-icon-button-color: var(--color-black);
+  --theme-white-icon-button-bg-color: var(--color-white);
+  --theme-white-icon-button-active-color: var(--color-grey-2);
+  --theme-white-icon-button-active-bg-color: var(--color-black);
+
+  // Black theme.
+
+  --theme-black-icon-color: var(--color-white);
+  --theme-black-icon-button-color: var(--color-white);
+  --theme-black-icon-button-bg-color: var(--color-black);
+  --theme-black-icon-button-active-color: var(--color-grey-8);
+  --theme-black-icon-button-active-bg-color: var(--color-white);
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --icon-color: var(--theme-#{$theme}-icon-color);
+
+    --icon-button-color: var(--theme-#{$theme}-icon-button-color);
+    --icon-button-bg-color: var(--theme-#{$theme}-icon-button-bg-color);
+    --icon-button-active-color: var(--theme-#{$theme}-icon-button-active-color);
+    --icon-button-active-bg-color: var(
+      --theme-#{$theme}-icon-button-active-bg-color
+    );
+  }
+}

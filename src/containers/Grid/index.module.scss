@@ -1,0 +1,127 @@
+.grid {
+  display: grid;
+
+  // Rows and columns.
+  // Expose the number of rows/columns as a variable so it can be used in child nodes.
+
+  @for $i from 1 through 6 {
+    &.rows-#{$i} {
+      --grid-rows: #{$i};
+      grid-template-rows: repeat($i, minmax(0, 1fr));
+    }
+
+    &.columns-#{$i} {
+      --grid-columns: #{$i};
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include min-media-query($breakpoint) {
+      @for $i from 1 through 6 {
+        &.rows-#{$breakpoint}-#{$i} {
+          --grid-rows: #{$i};
+          grid-template-rows: repeat($i, minmax(0, 1fr));
+        }
+
+        &.columns-#{$breakpoint}-#{$i} {
+          --grid-columns: #{$i};
+          grid-template-columns: repeat($i, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+
+  // Even though gap properties are defined in the global styles,
+  // exposing them as variables allows for more control over the grid.
+
+  $grid-gap-properties: (
+    'gap': 'gap',
+    'rowGap': 'row-gap',
+    'columnGap': 'column-gap',
+  );
+
+  &:global {
+    @each $propertyKey, $property in $grid-gap-properties {
+      @each $spacing in $spacings {
+        &.#{$propertyKey}-#{$spacing} {
+          --#{$propertyKey}: var(--spacing-#{$spacing});
+        }
+      }
+
+      &.#{$propertyKey}-none {
+        --#{$propertyKey}: 0;
+      }
+
+      @each $breakpoint in $breakpoints {
+        @include min-media-query($breakpoint) {
+          @each $spacing in $spacings {
+            &.#{$propertyKey}-#{$breakpoint}-#{$spacing} {
+              --#{$propertyKey}: var(--spacing-#{$spacing});
+            }
+          }
+
+          &.#{$propertyKey}-#{$breakpoint}-none {
+            --#{$propertyKey}: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Alignment.
+
+  $alignValues: start, center, end, stretch;
+
+  @each $value in $alignValues {
+    &.align-#{$value} {
+      align-items: $value;
+    }
+
+    .gridItem.align-#{$value} {
+      align-self: $value;
+    }
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include min-media-query($breakpoint) {
+      @each $value in $alignValues {
+        &.align-#{$breakpoint}-#{$value} {
+          align-items: $value;
+        }
+
+        .gridItem.align-#{$breakpoint}-#{$value} {
+          align-self: $value;
+        }
+      }
+    }
+  }
+
+  // Justify.
+
+  $justifyValues: start, center, end, space-between, space-around;
+
+  @each $value in $justifyValues {
+    &.justify-#{$value} {
+      justify-items: $value;
+    }
+
+    .gridItem.justify-#{$value} {
+      justify-self: $value;
+    }
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include min-media-query($breakpoint) {
+      @each $value in $justifyValues {
+        &.justify-#{$value} {
+          justify-items: $value;
+        }
+
+        .gridItem.justify-#{$breakpoint}-#{$value} {
+          justify-self: $value;
+        }
+      }
+    }
+  }
+}

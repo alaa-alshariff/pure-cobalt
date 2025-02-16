@@ -1,0 +1,39 @@
+/*
+ * Lists styles.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ */
+
+// CSS variables definition.
+
+:root {
+  --list-margin: 1.5rem;
+
+  --list-margin-dash-item: 0.5rem;
+  --list-margin-square-item: 0.5rem;
+  --list-margin-bullet-item: 0.5rem;
+  --list-margin-number-item: 0.5rem;
+  --list-margin-border-item: 0.5rem;
+
+  // White theme.
+
+  --theme-white-list-text-color: var(--color-black);
+  --theme-white-list-bullet-color: var(--color-primary);
+
+  // Black theme.
+
+  --theme-black-list-text-color: var(--color-white);
+  --theme-black-list-bullet-color: var(--color-primary);
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --list-text-color: var(--theme-#{$theme}-list-text-color);
+    --list-bullet-color: var(--theme-#{$theme}-list-bullet-color);
+  }
+}

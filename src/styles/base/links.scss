@@ -1,0 +1,73 @@
+/*
+ * Links styles.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ *
+ * @see https://www.figma.com/design/1fysOYudJ918xtLcbZ3kJp/Crisis24-Website-2.0?node-id=5661-26908&node-type=frame&m=dev
+ */
+
+// CSS variables definition.
+
+:root {
+  --link-transition: all 0.3s ease-in-out;
+
+  --with-arrow-sm-line-width: 20px;
+  --with-arrow-md-line-width: 40px;
+  --with-arrow-lg-line-width: 60px;
+
+  --with-arrow-sm-arrow-size: 24px;
+  --with-arrow-md-arrow-size: 32px;
+  --with-arrow-lg-arrow-size: 48px;
+
+  --with-arrow-line-width: var(--with-arrow-sm-line-width);
+  --with-arrow-arrow-size: var(--with-arrow-sm-arrow-size);
+
+  // White theme.
+
+  --theme-white-link-color: #{rgba($black, 0.5)};
+  --theme-white-link-active-color: var(--color-black);
+
+  --theme-white-link-underline-color: var(--color-black);
+  --theme-white-link-underline-border-color: var(--color-black);
+  --theme-white-link-underline-border-active-color: var(--color-primary);
+
+  --theme-white-link-with-arrow-color: var(--color-black);
+  --theme-white-link-with-arrow-line-color: var(--color-primary);
+
+  // Black theme.
+
+  --theme-black-link-color: #{rgba($white, 0.6)};
+  --theme-black-link-active-color: var(--color-white);
+
+  --theme-black-link-underline-color: var(--color-white);
+  --theme-black-link-underline-border-color: var(--color-white);
+  --theme-black-link-underline-border-active-color: var(--color-primary);
+
+  --theme-black-link-with-arrow-color: var(--color-white);
+  --theme-black-link-with-arrow-line-color: var(--color-primary);
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --link-color: var(--theme-#{$theme}-link-color);
+    --link-active-color: var(--theme-#{$theme}-link-active-color);
+
+    --link-underline-color: var(--theme-#{$theme}-link-underline-color);
+    --link-underline-border-color: var(
+      --theme-#{$theme}-link-underline-border-color
+    );
+    --link-underline-border-active-color: var(
+      --theme-#{$theme}-link-underline-border-active-color
+    );
+
+    --link-with-arrow-color: var(--theme-#{$theme}-link-with-arrow-color);
+    --link-with-arrow-line-color: var(
+      --theme-#{$theme}-link-with-arrow-line-color
+    );
+  }
+}

@@ -1,0 +1,88 @@
+/*
+ * Tags styles.
+ *
+ * Notes: 
+ * - This file is included on every page, please don't add styles here that are not needed.
+ * - The :root selector is used for defining CSS variables, enabling us to override variables deeper if needed.
+ *   It also ensure that nested themes are supported.
+ *
+ * @see https://www.figma.com/design/XxDeNES3KCxZ3qRZQpPGV5/grd025-crisis24-website-02?node-id=4088-45&node-type=frame&t=ceG9eHRaej5qvd9N-0
+ */
+
+// CSS variables definition.
+
+:root {
+  // White theme.
+
+  --theme-white-tag-primary-color: var(--color-black);
+  --theme-white-tag-primary-bg-color: var(--color-primary);
+
+  --theme-white-tag-primary-active-color: var(--color-black);
+  --theme-white-tag-primary-active-bg-color: var(--color-primary);
+
+  --theme-white-tag-secondary-color: var(--color-grey-7);
+  --theme-white-tag-secondary-bg-color: var(--color-grey-2);
+
+  --theme-white-tag-secondary-active-color: var(--color-white);
+  --theme-white-tag-secondary-active-bg-color: var(--color-black);
+
+  --theme-white-tag-tertiary-color: var(--color-white);
+  --theme-white-tag-tertiary-bg-color: var(--color-black);
+
+  --theme-white-tag-tertiary-active-color: var(--color-black);
+  --theme-white-tag-tertiary-active-bg-color: var(--color-orange-2);
+
+  // Black theme.
+
+  --theme-black-tag-primary-color: var(--color-black);
+  --theme-black-tag-primary-bg-color: var(--color-primary);
+
+  --theme-black-tag-primary-active-color: var(--color-black);
+  --theme-black-tag-primary-active-bg-color: var(--color-primary);
+
+  --theme-black-tag-secondary-color: var(--color-black);
+  --theme-black-tag-secondary-bg-color: var(--color-white);
+
+  --theme-black-tag-secondary-active-color: var(--color-black);
+  --theme-black-tag-secondary-active-bg-color: var(--color-grey-4);
+
+  --theme-black-tag-tertiary-color: var(--color-black);
+  --theme-black-tag-tertiary-bg-color: var(--color-white);
+
+  --theme-black-tag-tertiary-active-color: var(--color-black);
+  --theme-black-tag-tertiary-active-bg-color: var(--color-orange-2);
+}
+
+// Overriding the variables per theme.
+
+@each $theme in $themes {
+  .theme-#{$theme} {
+    --tag-primary-color: var(--theme-#{$theme}-tag-primary-color);
+    --tag-primary-bg-color: var(--theme-#{$theme}-tag-primary-bg-color);
+
+    --tag-primary-active-color: var(--theme-#{$theme}-tag-primary-active-color);
+    --tag-primary-active-bg-color: var(
+      --theme-#{$theme}-tag-primary-active-bg-color
+    );
+
+    --tag-secondary-color: var(--theme-#{$theme}-tag-secondary-color);
+    --tag-secondary-bg-color: var(--theme-#{$theme}-tag-secondary-bg-color);
+
+    --tag-secondary-active-color: var(
+      --theme-#{$theme}-tag-secondary-active-color
+    );
+    --tag-secondary-active-bg-color: var(
+      --theme-#{$theme}-tag-secondary-active-bg-color
+    );
+
+    --tag-tertiary-color: var(--theme-#{$theme}-tag-tertiary-color);
+    --tag-tertiary-bg-color: var(--theme-#{$theme}-tag-tertiary-bg-color);
+
+    --tag-tertiary-active-color: var(
+      --theme-#{$theme}-tag-tertiary-active-color
+    );
+    --tag-tertiary-active-bg-color: var(
+      --theme-#{$theme}-tag-tertiary-active-bg-color
+    );
+  }
+}

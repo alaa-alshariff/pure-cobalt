@@ -1,0 +1,80 @@
+.baseContainer {
+  // Border.
+
+  .border {
+    border: 0 solid var(--border-color);
+
+    &.border-all {
+      border-width: 1px;
+    }
+
+    &.border-top {
+      border-top-width: 1px;
+    }
+
+    &.border-right {
+      border-right-width: 1px;
+    }
+
+    &.border-bottom {
+      border-bottom-width: 1px;
+    }
+
+    &.border-left {
+      border-left-width: 1px;
+    }
+
+    @each $breakpoint in $breakpoints {
+      @include min-media-query($breakpoint) {
+        &.border-#{$breakpoint}-all {
+          border-width: 1px;
+        }
+
+        &.border-#{$breakpoint}-top {
+          border-width: 0;
+          border-top-width: 1px;
+        }
+
+        &.border-#{$breakpoint}-right {
+          border-width: 0;
+          border-right-width: 1px;
+        }
+
+        &.border-#{$breakpoint}-bottom {
+          border-width: 0;
+          border-bottom-width: 1px;
+        }
+
+        &.border-#{$breakpoint}-left {
+          border-width: 0;
+          border-left-width: 1px;
+        }
+      }
+    }
+  }
+
+  // Hidden.
+
+  &.hidden {
+    display: none;
+  }
+
+  // Note: this is a special case, every breakpoint needs to be handled separately
+  // because we don't want to override the current display value (i.e. flex).
+
+  @each $breakpoint in $breakpoints {
+    @if $breakpoint == 'xl' {
+      @include min-media-query($breakpoint) {
+        &.hidden-#{$breakpoint} {
+          display: none;
+        }
+      }
+    } @else {
+      @include only-media-query($breakpoint) {
+        &.hidden-#{$breakpoint} {
+          display: none;
+        }
+      }
+    }
+  }
+}
